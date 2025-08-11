@@ -1,19 +1,30 @@
 #include <iostream>
-using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; ++i)
+        if (n % i == 0)
+            return false;
+    return true;
+}
 
 int main() {
-    int n;
-    bool isPrime = true;
-    cout << "Enter number: ";
-    cin >> n;
-    if (n <= 1) isPrime = false;
+    int N;
+    std::cout << "Enter a number: ";
+    std::cin >> N;
+
+  
+    if (isPrime(N))
+        std::cout << N << " is a prime number.\n";
     else
-        for (int i = 2; i*i <= n; i++)
-            if (n % i == 0) {
-                isPrime = false;
-                break;
-            }
-    if (isPrime) cout << "Prime\n";
-    else cout << "Not prime\n";
+        std::cout << N << " is not a prime number.\n";
+
+
+    std::cout << "Prime numbers from 1 to " << N << " are:\n";
+    for (int i = 2; i <= N; ++i)
+        if (isPrime(i))
+            std::cout << i << " ";
+
+    std::cout << std::endl;
     return 0;
 }
